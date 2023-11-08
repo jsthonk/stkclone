@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeProvider.context";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -21,17 +22,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider
-      appearance={{
-        elements: {
-          formButtonPrimary: "primary",
-          footerActionLink: "primary-text-gradient hover:text-primary-500",
-        },
-      }}
-    >
-      <html lang="en">
-        <body className={montserrat.className}>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={montserrat.className}>
+        <ClerkProvider
+          appearance={{
+            elements: {
+              formButtonPrimary: "primary",
+              footerActionLink: "primary-text-gradient hover:text-primary-500",
+            },
+          }}
+        >
+          <ThemeProvider>{children}</ThemeProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
