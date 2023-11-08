@@ -3,8 +3,9 @@
 @tailwind utilities;
 @import url("../styles/theme.css");
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
+
 @layer utilities {
   .flex-center {
     @apply flex justify-center items-center;
